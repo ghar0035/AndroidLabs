@@ -3,5 +3,9 @@
     <string name="app_name">آزمایش1</string>
     <string name="hello_message">سلام دنیا!</string>
     <string name="ButtonText">تکمه</string>
+    <string name="TextView">بهGUI نگاه کنید</string>
+    <string name="ButtonClick">اینجا کلیک کنید </string>
     <string name="CheckBoxText">بررسی کنید!</string>
+    <string name="Switch">روشن / حاموش</string>
+    <string name="EditText">اینجا بنویسید</string>
 </resources>

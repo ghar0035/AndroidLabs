@@ -2,5 +2,9 @@
     <string name="app_name">Lab1</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I’m a button</string>
+    <string name="TextView">Look at my GUI</string>
+    <string name="ButtonClick">Click here</string>
     <string name="CheckBoxText">Check this out!</string>
+    <string name="Switch">Switch on / off</string>
+    <string name="EditText">Type here</string>
 </resources>
