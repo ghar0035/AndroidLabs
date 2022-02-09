@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab1</string>
+    <string name="app_name">Lab2</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I’m a button</string>
     <string name="TextView">Look at my GUI</string>
