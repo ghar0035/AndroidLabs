@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layoutRoot">
 
 
     <LinearLayout
@@ -16,12 +17,11 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="20dp"
             android:layout_height="53dp"
             android:layout_weight="1"
             android:text="@string/TextView"
-            android:textSize="30dp"
-            tools:text="@string/TextView" />
+            android:textSize="30dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="fill"
-            android:text="@string/ButtonClick" />
+            android:text="@string/ButtonClick"/>
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -74,6 +74,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"

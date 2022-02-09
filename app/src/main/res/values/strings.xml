@@ -7,4 +7,7 @@
     <string name="CheckBoxText">Check this out!</string>
     <string name="Switch">Switch on / off</string>
     <string name="EditText">Type here</string>
+    <string name="toast_message">Here is more information</string>
+    <string name="snackbar_on">The switch is now on</string>
+    <string name="snackbar_off">The switch is now off</string>
 </resources>

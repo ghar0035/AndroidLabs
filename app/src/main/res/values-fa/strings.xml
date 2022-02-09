@@ -8,4 +8,7 @@
     <string name="CheckBoxText">بررسی کنید!</string>
     <string name="Switch">روشن / حاموش</string>
     <string name="EditText">اینجا بنویسید</string>
+    <string name="toast_message">اطلاعات بیشتر</string>
+    <string name="snackbar_on">سویچ فعال است</string>
+    <string name="snackbar_off">سویچ غیرفعال است</string>
 </resources>
