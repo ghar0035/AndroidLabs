@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         String toast_message= res.getString(R.string.toast_message);
         String snackbar_on= res.getString(R.string.snackbar_on);
         String snackbar_off= res.getString(R.string.snackbar_off);
+        String Undo = res.getString(R.string.Undo);
 
         Button bttn = findViewById(R.id.button2);
         bttn.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked) {
                     Snackbar snackbar = Snackbar
                             .make(findViewById(R.id.layoutRoot), snackbar_on, Snackbar.LENGTH_LONG)
-                            .setAction("UNDO", new View.OnClickListener() {
+                            .setAction(Undo, new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     String status="";
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     Snackbar snackbar = Snackbar
                             .make(findViewById(R.id.layoutRoot), snackbar_off, Snackbar.LENGTH_LONG)
-                            .setAction("UNDO", new View.OnClickListener() {
+                            .setAction(Undo, new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     String status="";
