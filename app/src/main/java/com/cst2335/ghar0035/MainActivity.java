@@ -89,7 +89,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 */
+/*
+        mCheckBox.setOnCheckedChangeListener((view, isChecked) -> mCrime.setSolved(isChecked));
 
+        mCheckBox.setOnCheckedChangeListener(buttonView, isChecked -> mCrime.setSolved(isChecked))
+ */
 
 
     }

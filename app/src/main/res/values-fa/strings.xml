@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آزمایش2</string>
-    <string name="hello_message">سلام دنیا!</string>
-    <string name="ButtonText">تکمه</string>
-    <string name="TextView">بهGUI نگاه کنید</string>
-    <string name="ButtonClick">اینجا کلیک کنید </string>
-    <string name="CheckBoxText">بررسی کنید!</string>
-    <string name="Switch">روشن / حاموش</string>
-    <string name="EditText">اینجا بنویسید</string>
-    <string name="toast_message">اطلاعات بیشتر</string>
-    <string name="snackbar_on">سویچ فعال است</string>
-    <string name="snackbar_off">سویچ غیرفعال است</string>
-    <string name="Undo">برگردان</string>
+    <string name="app_name">آزمایش3</string>
+    <string name="TextViewEmail">آدرس ایمیل خود را وارد کنید:</string>
+    <string name="TextViewPass">پسورد خود را وارد کنید:</string>
+    <string name="EditTextEmail">ایمیل خود را اینجا بنویسید</string>
+    <string name="LoginButton">ورود به سیستم</string>
+
 </resources>
