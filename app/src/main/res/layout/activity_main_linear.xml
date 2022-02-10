@@ -35,7 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="fill"
-            android:text="@string/ButtonClick"/>
+            android:text="@string/ButtonClick"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray"/>
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -78,7 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="@string/EditText">
+            android:text="@string/EditText"
+            android:textColor="@color/gray">
 
         </EditText>
 
