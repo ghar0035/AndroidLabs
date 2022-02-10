@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/EditTextEmail"
+        android:textColor="@color/lightGray"
         android:inputType="textEmailAddress">
     </EditText>
 
@@ -37,6 +38,8 @@
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/LoginButton" />
+        android:text="@string/LoginButton"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/lightGray"/>
 
 </LinearLayout>

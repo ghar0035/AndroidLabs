@@ -17,9 +17,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_linear);
+        setContentView(R.layout.activity_main_login);
 
 
+/*
         Resources res = getResources();
         String toast_message= res.getString(R.string.toast_message);
         String snackbar_on= res.getString(R.string.snackbar_on);
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     snackbar.show();
                 }
             }
-        });
+        });   */
         /*
         Resources resources = getResources();
         String toast_message= res.getString(R.string.toast_message);
