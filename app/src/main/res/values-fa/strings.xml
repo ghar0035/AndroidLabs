@@ -11,4 +11,5 @@
     <string name="toast_message">اطلاعات بیشتر</string>
     <string name="snackbar_on">سویچ فعال است</string>
     <string name="snackbar_off">سویچ غیرفعال است</string>
+    <string name="Undo">برگردان</string>
 </resources>
