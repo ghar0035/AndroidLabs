@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Lab3</string>
+    <string name="hello_message">Hello World!</string>
+    <string name="ButtonText">I’m a button</string>
     <string name="TextViewEmail">Enter your email address:</string>
     <string name="TextViewPass">Type your password:</string>
     <string name="EditTextEmail">Type email hear</string>
     <string name="LoginButton">LOGIN</string>
+
 </resources>

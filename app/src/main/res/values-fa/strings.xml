@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">آزمایش3</string>
+    <string name="hello_message">سلام دنیا!</string>
+    <string name="ButtonText">من یک تکمه هستم</string>
     <string name="TextViewEmail">آدرس ایمیل خود را وارد کنید:</string>
     <string name="TextViewPass">پسورد خود را وارد کنید:</string>
     <string name="EditTextEmail">ایمیل خود را اینجا بنویسید</string>
