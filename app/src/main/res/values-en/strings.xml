@@ -3,6 +3,15 @@
     <string name="app_name">Lab3</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I’m a button</string>
+    <string name="TextView">Look at my GUI</string>
+    <string name="ButtonClick">Click here</string>
+    <string name="CheckBoxText">Check this out!</string>
+    <string name="Switch">Switch on / off</string>
+    <string name="EditText">Type here</string>
+    <string name="toast_message">Here is more information</string>
+    <string name="snackbar_on">The switch is now on</string>
+    <string name="snackbar_off">The switch is now off</string>
+    <string name="Undo">Undo</string>
     <string name="TextViewEmail">Enter your email address:</string>
     <string name="TextViewPass">Type your password:</string>
     <string name="EditTextEmail">Type email hear</string>
