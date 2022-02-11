@@ -19,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+
 }
 
 /*
