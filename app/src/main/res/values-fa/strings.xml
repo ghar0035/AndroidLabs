@@ -16,5 +16,11 @@
     <string name="TextViewPass">پسورد خود را وارد کنید:</string>
     <string name="EditTextEmail">ایمیل خود را اینجا بنویسید</string>
     <string name="LoginButton">ورود به سیستم</string>
-
+    <string name="Profile">پروفایل شما</string>
+    <string name="Name">اسم شما:</string>
+    <string name="TypeName">اسم خود را وارد کنید:</string>
+    <string name="Email">ایمیل شما:</string>
+    <string name="TypeEmail">ایمیل خود را وارد نمایید</string>
+    <string name="Picture">تصویر شما:</string>
+    <string name="UnderButton">روی دکمه بالا برای گرفتن عکس کلیک نمایید</string>
 </resources>
