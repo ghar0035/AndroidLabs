@@ -26,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String TAG = "PROFILE_ACTIVITY";
 
     // ImageView imgView;
+    Button goToChat;
     ImageButton imageButton;
     EditText emailField;
 
@@ -57,6 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         imageButton = findViewById(R.id.btnUpload);
         emailField = findViewById(R.id.yourEmail);
+        goToChat = findViewById(R.id.btnGoToChat);
 
         // set default value email for email field, coming from MainActivity
         Intent fromMain = getIntent();
@@ -66,6 +68,11 @@ public class ProfileActivity extends AppCompatActivity {
         imageButton.setOnClickListener(click -> {
                     this.dispatchTakePictureIntent();
                 });
+
+        goToChat.setOnClickListener(click ->{
+            Intent goToChat = new Intent(ProfileActivity.this , ChatRoomActivity.class);
+            startActivity(goToChat);
+        });
 
 
     }

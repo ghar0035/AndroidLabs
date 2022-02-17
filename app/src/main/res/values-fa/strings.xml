@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آزمایش3</string>
+    <string name="app_name">آزمایش4</string>
     <string name="hello_message">سلام دنیا!</string>
     <string name="ButtonText">تکمه</string>
     <string name="TextView">بهGUI نگاه کنید</string>
@@ -23,4 +23,13 @@
     <string name="TypeEmail">ایمیل خود را وارد نمایید</string>
     <string name="Picture">تصویر شما:</string>
     <string name="UnderButton">روی دکمه بالا برای گرفتن عکس کلیک نمایید</string>
+    <string name="goToChat">برو به چت</string>
+    <string name="sendBtn">ارسال</string>
+    <string name="receiveBtn">دریافت</string>
+    <string name="chatInput">اینجا بنویسید</string>
+    <string name="deleteAlert">آیا میخواهید این پیام را پاک کنید؟</string>
+    <string name="selectedRow">ردیف انتخاب شده </string>
+    <string name="databaseId">شناسه پاک شده </string>
+    <string name="deleteBtn">پاک شود</string>
+    <string name="cancelBtn">انصراف</string>
 </resources>

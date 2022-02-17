@@ -60,4 +60,10 @@
         android:layout_height="wrap_content"
         android:text="@string/UnderButton" />
 
+    <Button
+        android:id="@+id/btnGoToChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/goToChat" />
+
 </LinearLayout>
