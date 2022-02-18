@@ -23,4 +23,12 @@
     <string name="TypeEmail">ایمیل خود را وارد نمایید</string>
     <string name="Picture">تصویر شما:</string>
     <string name="UnderButton">روی دکمه بالا برای گرفتن عکس کلیک نمایید</string>
+    <string name="onActivityMsg">در تابع: onActivityResult</string>
+    <string name="refusedMsg">کاربر از گرفتن عکس خودداری کرد.</string>
+    <string name="onCreateMsg">در تابع: onCreate</string>
+    <string name="onStartMsg">در تابع: onStart</string>
+    <string name="onResumeMsg">در تابع: onResume</string>
+    <string name="onPauseMsg">در تابع: onPause</string>
+    <string name="onStopMsg">در تابع: onStop</string>
+    <string name="onDestroyMsg">در تابع: onDestroy</string>
 </resources>

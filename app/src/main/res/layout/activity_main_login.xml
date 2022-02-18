@@ -19,7 +19,7 @@
         android:id="@+id/emailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/EditTextEmail"
+        android:hint="@string/EditTextEmail"
         android:inputType="textEmailAddress">
     </EditText>
 

@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         // get from shared value file the email address and set the email field text to that value
         SharedPreferences prefs = getSharedPreferences( USER_DETAIL , Context.MODE_PRIVATE);
-        String emailAddress = prefs.getString("emailAddress", "");
-        inputEmail.setText(emailAddress);
+        String emailAddress = prefs.getString("emailAddress", "");   //save instance
+        inputEmail.setText(emailAddress);    //restore instance
 
 
         loginButton.setOnClickListener(click -> {

@@ -22,5 +22,13 @@
     <string name="TypeEmail">Enter your email</string>
     <string name="Picture">Your picture:</string>
     <string name="UnderButton">Click the button above to take a picture</string>
+    <string name="onActivityMsg">In function: onActivityResult</string>
+    <string name="refusedMsg">User refused to capture a picture.</string>
+    <string name="onCreateMsg">In function: onCreate</string>
+    <string name="onStartMsg">In function: onStart</string>
+    <string name="onResumeMsg">In function: onResume</string>
+    <string name="onPauseMsg">In function: onPause</string>
+    <string name="onStopMsg">In function: onStop</string>
+    <string name="onDestroyMsg">In function: onDestroy</string>
 
 </resources>
