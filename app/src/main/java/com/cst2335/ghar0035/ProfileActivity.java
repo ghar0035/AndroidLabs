@@ -25,8 +25,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     public static final String TAG = "PROFILE_ACTIVITY";
 
-    // ImageView imgView;
-    Button goToChat;
+    ImageView imgView;
+    Button goToChatBtn;
     ImageButton imageButton;
     EditText emailField;
 
@@ -40,7 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
                    if (result.getResultCode() == Activity.RESULT_OK) {
                        Intent data = result.getData();
                        Bitmap imgbitmap = (Bitmap) data.getExtras().get("data");
-                       // imgView.setImageBitmap(imgbitmap);
+                       imgView = findViewById(R.id.imageViewBox);
+                       imgView.setImageBitmap(imgbitmap);
                     } else if(result.getResultCode() == Activity.RESULT_CANCELED) {
                        Log.i(TAG, "User refused to capture a picture.");
                    }
@@ -58,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         imageButton = findViewById(R.id.btnUpload);
         emailField = findViewById(R.id.yourEmail);
-        goToChat = findViewById(R.id.btnGoToChat);
+        goToChatBtn = findViewById(R.id.btnGoToChat);
 
         // set default value email for email field, coming from MainActivity
         Intent fromMain = getIntent();
@@ -69,7 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
                     this.dispatchTakePictureIntent();
                 });
 
-        goToChat.setOnClickListener(click ->{
+        goToChatBtn.setOnClickListener(click ->{
             Intent goToChat = new Intent(ProfileActivity.this , ChatRoomActivity.class);
             startActivity(goToChat);
         });

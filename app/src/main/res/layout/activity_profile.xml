@@ -26,7 +26,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TypeName">
+        android:hint="@string/TypeName">
     </EditText>
 
     <TextView
@@ -39,7 +39,7 @@
         android:id="@+id/yourEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TypeEmail">
+        android:hint="@string/TypeEmail">
     </EditText>
 
     <TextView
@@ -47,6 +47,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Picture" />
+
+    <ImageView
+        android:id="@+id/imageViewBox"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        tools:srcCompat="@tools:sample/avatars"
+        />
 
     <ImageButton
         android:id="@+id/btnUpload"
