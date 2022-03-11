@@ -1,11 +1,14 @@
 package com.cst2335.ghar0035;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,18 +26,23 @@ import android.widget.TextView;
 
 import java.text.Bidi;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ChatRoomActivity extends AppCompatActivity {
     public static final String TAG = "ChatRoomActivity";
+    //Create an OpenHelper to store data
+    MyOpenHelper myOpener;
+    SQLiteDatabase db;
+    int version = 1;
 
     private ArrayList<Message> messages = new ArrayList<>();
-    ListAdapter messageAdapter;    /*Adapter retrieves data from an external
-                                     source and creates a View that represents each data entry */
+    ListAdapter messageAdapter;    /*Adapter retrieves data from an external source and creates a View that represents each data entry */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_room);
+        setContentView(R.layout.activity_chat_room);   //load XML
 
         Button sendBtn = findViewById(R.id.sendBtn);
         Button receiveBtn = findViewById(R.id.receiveBtn);
@@ -48,37 +56,88 @@ public class ChatRoomActivity extends AppCompatActivity {
         String deleteBtn = res.getString(R.string.deleteBtn);
         String cancelBtn = res.getString(R.string.cancelBtn);
 
+        //initialize in onCreate
+        myOpener = new MyOpenHelper(this);
+
+        //open the database
+        db = myOpener.getWritableDatabase();
+
+        //load from the database
+        Cursor cursor = db.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null );
+
+        //Convert column names to indices
+        int idIndex = cursor.getColumnIndex(MyOpenHelper.COL_ID);
+        int messageIndex = cursor.getColumnIndex(MyOpenHelper.COL_MESSAGE);
+        int isSentIndex = cursor.getColumnIndex(MyOpenHelper.COL_IS_SENT);
+
+        //cursor is pointing to row1, returns false if no more data
+        while(cursor.moveToNext()){
+            //pointing to row2
+            int id = cursor.getInt(idIndex);
+            String message = cursor.getString(messageIndex);
+            int isSent = cursor.getInt(isSentIndex);
+
+            //add to arrayList:
+            messages.add( new Message( message , isSent == 1 ? true : false , id ));
+
+        }
+
+
         /*To populate the ListView with data,call setAdapter() on the ListView,to associate an adapter with the list*/
         chatListView.setAdapter(messageAdapter = new ListAdapter());
 
         // button send click
         sendBtn.setOnClickListener( click -> {
-            Message message = new Message(inputTex.getText().toString(),"Send");
+            String inputText = inputTex.getText().toString();
+            if(inputText.isEmpty()) {
+                return;
+
+            }
+
+            Message message = new Message(inputText,true);
             messages.add(message);
+            ContentValues cv = new ContentValues();
+            cv.put(myOpener.COL_MESSAGE, inputText);
+            cv.put(myOpener.COL_IS_SENT, true);
+            long id = db.insert(myOpener.TABLE_NAME, myOpener.COL_ID, cv);
             inputTex.setText("");
+            this.printCursor(cursor, version);
             messageAdapter.notifyDataSetChanged();
         });
 
         // button receive click
         receiveBtn.setOnClickListener(click -> {
-            Message message = new Message(inputTex.getText().toString(),"Receive");
+            String inputText = inputTex.getText().toString();
+            if(inputText.isEmpty()) {
+                return;
+            }
+
+            Message message = new Message(inputText,false);
             messages.add(message);
+            ContentValues cv = new ContentValues();
+            cv.put(myOpener.COL_MESSAGE, inputText);
+            cv.put(myOpener.COL_IS_SENT, false);
+            long id = db.insert(myOpener.TABLE_NAME, myOpener.COL_ID, cv);
             inputTex.setText("");
+            this.printCursor(cursor, version);
             messageAdapter.notifyDataSetChanged();
         });
+
 
         chatListView.setOnItemClickListener((parent, view, i,l) -> {
 
             AlertDialog.Builder alert = new AlertDialog.Builder(ChatRoomActivity.this);
             alert.setTitle(deleteAlert)
 
-                    .setMessage(selectedRow + i  + "\n \n" + databaseId + messageAdapter.getItemId(i))
+                    .setMessage(selectedRow + " " + i  + "\n \n" + databaseId + " " +  messageAdapter.getItemId(i))
 
                     .setPositiveButton(deleteBtn, (click, arg) -> {
 
+                        db.delete(myOpener.TABLE_NAME, MyOpenHelper.COL_ID + "= ?", new String[] { Long.toString(messageAdapter.getItemId(i)) });
                         messages.remove(i);
-                        messageAdapter.notifyDataSetChanged();
 
+                        messageAdapter.notifyDataSetChanged();
+                        this.printCursor( cursor, version);
                     })
 
                     .setNegativeButton(cancelBtn, (click, arg) -> {
@@ -90,6 +149,26 @@ public class ChatRoomActivity extends AppCompatActivity {
                     .create().show();
 
         });
+
+    }
+
+    private void printCursor(Cursor c, int version) {
+        Log.i(TAG, "database version" + db.getVersion());
+        Log.i(TAG, "Number of Columns " + c.getColumnCount());
+        Log.i(TAG, "Name of the Columns " + Arrays.toString(c.getColumnNames()));
+        Log.i(TAG, "Number of rows " + c.getCount() );
+
+        String tableString = String.format("Table %s:\n", myOpener.TABLE_NAME);
+        if (c.moveToFirst() ){
+            String[] columnNames = c.getColumnNames();
+            do {
+                for (String name: columnNames) {
+                    tableString += String.format("%s: %s ", name,
+                            c.getString(c.getColumnIndex(name)));
+                }
+            } while (c.moveToNext());
+            Log.i(TAG,"Each row of results in the cursor" + tableString);
+        }
     }
 
     /*ListAdapter is an Interface that you must implement by writing these 4 public functions */
@@ -107,7 +186,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         //3-return the database ID of the element at the given index of position
         public long getItemId(int position) {
-            return (long) position;
+            return getItem(position).id;
         }
 
         //4-creates a View object(newView) to go in a row of the ListView and returns newView
@@ -122,9 +201,9 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             ImageView iView = newView.findViewById(R.id.avatar);
             TextView tView = newView.findViewById(R.id.messageText);
-            tView.setText(getItem(position).text);
+            tView.setText(getItem(position).message);
 
-            if(getItem(position).type == "Send") {
+            if(getItem(position).isSent) {
                 iView.setImageResource(R.drawable.row_send);
                 rowLayout.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
                 tView.setGravity(Gravity.RIGHT);
@@ -139,12 +218,19 @@ public class ChatRoomActivity extends AppCompatActivity {
     }
 
     private class Message {
-         String text = "";
-         String type = "";
+         String message = "";
+         Boolean isSent = false;
+         long id;
 
-        Message(String text, String type){
-            this.text = text;
-            this.type = type;
+        Message(String message, boolean isSent){
+            this.message = message;
+            this.isSent = isSent;
+        }
+
+        Message(String message, boolean isSent, long id){
+            this.message = message;
+            this.isSent = isSent;
+            this.id = id;
         }
     }
 }
