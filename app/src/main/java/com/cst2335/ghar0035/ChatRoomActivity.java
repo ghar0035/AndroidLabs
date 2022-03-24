@@ -1,6 +1,9 @@
 package com.cst2335.ghar0035;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,6 +39,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     MyOpenHelper myOpener;
     SQLiteDatabase db;
     int version = 1;
+    Boolean isTablet = false;
 
     private ArrayList<Message> messages = new ArrayList<>();
     ListAdapter messageAdapter;    /*Adapter retrieves data from an external source and creates a View that represents each data entry */
@@ -48,6 +53,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         Button receiveBtn = findViewById(R.id.receiveBtn);
         EditText inputTex = findViewById(R.id.inputText);
         ListView chatListView = findViewById(R.id.chatListView);   //AdapterView
+        FrameLayout chatFramelayout = findViewById(R.id.chatFrameLayoutTablet);
 
         Resources res = getResources();
         String deleteAlert = res.getString(R.string.deleteAlert);
@@ -55,6 +61,12 @@ public class ChatRoomActivity extends AppCompatActivity {
         String databaseId = res.getString(R.string.databaseId);
         String deleteBtn = res.getString(R.string.deleteBtn);
         String cancelBtn = res.getString(R.string.cancelBtn);
+
+        if(chatFramelayout != null){
+            isTablet = true;
+        } else {
+            isTablet = false;
+        }
 
         //initialize in onCreate
         myOpener = new MyOpenHelper(this);
@@ -93,7 +105,6 @@ public class ChatRoomActivity extends AppCompatActivity {
                 return;
 
             }
-
             Message message = new Message(inputText,true);
             messages.add(message);
             ContentValues cv = new ContentValues();
@@ -123,33 +134,53 @@ public class ChatRoomActivity extends AppCompatActivity {
             messageAdapter.notifyDataSetChanged();
         });
 
+        chatListView.setOnItemClickListener((list, view, position,id) -> {
 
-        chatListView.setOnItemClickListener((parent, view, i,l) -> {
+            if(isTablet){
+                DetailsFragment detailFragment = new DetailsFragment();
+
+                Bundle args = new Bundle();
+                args.putLong(detailFragment.ID, messages.get(position).id);
+                args.putBoolean(detailFragment.IS_SENT,  messages.get(position).isSent);
+                args.putString(detailFragment.MESSAGE,  messages.get(position).message);
+                detailFragment.setArguments(args);
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();// begin  FragmentTransaction
+                ft.setReorderingAllowed(true);
+                ft.replace(R.id.chatFrameLayoutTablet, detailFragment, "SOMETAG");    // add    Fragment
+                ft.commit();
+            } else {
+                Intent goToEmpty = new Intent(ChatRoomActivity.this , EmptyActivity.class);
+                goToEmpty.putExtra("ID",messages.get(position).id);
+                goToEmpty.putExtra("IsSent",messages.get(position).isSent);
+                goToEmpty.putExtra("Message",messages.get(position).message);
+
+                startActivity(goToEmpty);
+            }
+        });
+
+        chatListView.setOnItemLongClickListener((parent, view, i,l) -> {
 
             AlertDialog.Builder alert = new AlertDialog.Builder(ChatRoomActivity.this);
             alert.setTitle(deleteAlert)
-
                     .setMessage(selectedRow + " " + i  + "\n \n" + databaseId + " " +  messageAdapter.getItemId(i))
-
                     .setPositiveButton(deleteBtn, (click, arg) -> {
-
                         db.delete(myOpener.TABLE_NAME, MyOpenHelper.COL_ID + "= ?", new String[] { Long.toString(messageAdapter.getItemId(i)) });
                         messages.remove(i);
-
                         messageAdapter.notifyDataSetChanged();
                         this.printCursor( cursor, version);
-                    })
 
+                        Fragment fragment = getSupportFragmentManager().findFragmentByTag("SOMETAG") ;
+                        if(fragment != null){
+                            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                        }
+                    })
                     .setNegativeButton(cancelBtn, (click, arg) -> {
-
                         alert.create().dismiss();
-
                     })
-
                     .create().show();
-
+            return true;
         });
-
     }
 
     private void printCursor(Cursor c, int version) {

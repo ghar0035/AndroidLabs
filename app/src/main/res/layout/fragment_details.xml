@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsFragment"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/msgTv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message Here"
+            android:textSize="30dp"
+            android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:id="@+id/idTv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID="
+            android:textSize="30dp"
+            android:layout_below="@+id/msgTv1"/>
+        <CheckBox
+            android:id="@+id/isSendChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is a Send Message"
+            android:layout_below="@+id/idTv2"/>
+
+        <Button
+            android:id="@+id/hideBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HIDE"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/lightGray"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>
