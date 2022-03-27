@@ -62,12 +62,6 @@ public class ChatRoomActivity extends AppCompatActivity {
         String deleteBtn = res.getString(R.string.deleteBtn);
         String cancelBtn = res.getString(R.string.cancelBtn);
 
-        if(chatFramelayout != null){
-            isTablet = true;
-        } else {
-            isTablet = false;
-        }
-
         //initialize in onCreate
         myOpener = new MyOpenHelper(this);
 
@@ -94,7 +88,6 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         }
 
-
         /*To populate the ListView with data,call setAdapter() on the ListView,to associate an adapter with the list*/
         chatListView.setAdapter(messageAdapter = new ListAdapter());
 
@@ -103,7 +96,6 @@ public class ChatRoomActivity extends AppCompatActivity {
             String inputText = inputTex.getText().toString();
             if(inputText.isEmpty()) {
                 return;
-
             }
             Message message = new Message(inputText,true);
             messages.add(message);
@@ -133,6 +125,12 @@ public class ChatRoomActivity extends AppCompatActivity {
             this.printCursor(cursor, version);
             messageAdapter.notifyDataSetChanged();
         });
+
+        if(chatFramelayout != null){
+            isTablet = true;
+        } else {
+            isTablet = false;
+        }
 
         chatListView.setOnItemClickListener((list, view, position,id) -> {
 

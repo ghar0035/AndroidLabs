@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آزمایش6</string>
+    <string name="app_name">آزمایش7</string>
     <string name="hello_message">سلام دنیا!</string>
     <string name="ButtonText">تکمه</string>
     <string name="TextView">بهGUI نگاه کنید</string>
@@ -32,4 +32,8 @@
     <string name="databaseId">شناسه پاک شده </string>
     <string name="deleteBtn">پاک شود</string>
     <string name="cancelBtn">انصراف</string>
+    <string name="goToToolbar">برو به صفحه نوار ابزار</string>
+    <string name="open">باز</string>
+    <string name="close">بسته</string>
+
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <item
+        android:id="@+id/ChatPage"
+        android:icon="@drawable/chatpage"
+        android:orderInCategory="1"
+        android:title="Chat Page"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/WeatherForecast"
+        android:icon="@drawable/weather"
+        android:orderInCategory="2"
+        android:title="Weather Forecast"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/GoBackToLogin"
+        android:icon="@drawable/login"
+        android:orderInCategory="3"
+        android:title="Go back to login"
+        app:showAsAction="always" />
+
+</menu>

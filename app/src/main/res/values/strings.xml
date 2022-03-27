@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab6</string>
+    <string name="app_name">Lab7</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I’m a button</string>
     <string name="TextView">Look at my GUI</string>
@@ -31,8 +31,9 @@
     <string name="databaseId">The database id is</string>
     <string name="deleteBtn">Delete</string>
     <string name="cancelBtn">Cancel</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="goToToolbar">Go to Toolbar page</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 
 </resources>

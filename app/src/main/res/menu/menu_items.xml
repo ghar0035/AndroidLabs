@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/play"
+        android:icon="@drawable/play"
+        android:orderInCategory="1"
+        android:title="play"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/pause"
+        android:icon="@drawable/pause"
+        android:orderInCategory="2"
+        android:title="pause"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/stop"
+        android:icon="@drawable/stop"
+        android:orderInCategory="3"
+        android:title="stop"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/faceBook"
+        android:icon="@drawable/facebook"
+        android:orderInCategory="4"
+        android:title="faceBook"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+</menu>

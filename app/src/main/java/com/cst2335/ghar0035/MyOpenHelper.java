@@ -15,8 +15,6 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     public static final String COL_MESSAGE = "Message";
     public static final String COL_IS_SENT  = "IsSent";
 
-
-
 /*
     context – the Activity where the database is being opened.
     databaseName – this is the filename that will contain the data.

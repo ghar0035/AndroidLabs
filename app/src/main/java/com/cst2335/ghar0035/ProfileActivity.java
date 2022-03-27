@@ -25,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     ImageView imgView;
     Button goToChatBtn;
+    Button goToToolbarBtn;
     ImageButton imageButton;
     EditText emailField;
 
@@ -58,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         imageButton = findViewById(R.id.btnUpload);
         emailField = findViewById(R.id.yourEmail);
         goToChatBtn = findViewById(R.id.btnGoToChat);
+        goToToolbarBtn = findViewById(R.id.btnGoToToolbar);
 
         // set default value email for email field, coming from MainActivity
         Intent fromMain = getIntent();
@@ -73,6 +75,10 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(goToChat);
         });
 
+        goToToolbarBtn.setOnClickListener(click -> {
+            Intent goToToolbar = new Intent(ProfileActivity.this ,TestToolbar.class);
+            startActivity(goToToolbar);
+        });
 
     }
 

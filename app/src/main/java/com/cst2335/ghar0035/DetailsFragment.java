@@ -3,6 +3,7 @@
 
 package com.cst2335.ghar0035;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -54,15 +55,15 @@ public class DetailsFragment extends Fragment {
         TextView msgTextView = newView.findViewById(R.id.msgTv1);
         TextView idTextView = newView.findViewById(R.id.idTv2);
         CheckBox isSendChk = newView.findViewById(R.id.isSendChk);
-        Button hideButton = (Button) newView.findViewById(R.id.hideBtn);
+        Button hideButton = newView.findViewById(R.id.hideBtn);
 
         isSendChk.setChecked(isSent);
         msgTextView.setText(message);
         idTextView.setText("ID = " + id);
 
         hideButton.setOnClickListener((view) -> {
-               removeFragment();
-            });
+                removeFragment();
+        });
 
         // Inflate the layout for this fragment
         return newView;

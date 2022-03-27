@@ -5,6 +5,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.view.LayoutInflater;
+
+import java.util.zip.Inflater;
 
 public class EmptyActivity extends AppCompatActivity {
 
@@ -30,6 +36,7 @@ public class EmptyActivity extends AppCompatActivity {
         ft.setReorderingAllowed(true);
         ft.replace(R.id.chatFrameLayoutMobile, detailFragment);    // add    Fragment
         ft.commit();
+
 
     }
 }
