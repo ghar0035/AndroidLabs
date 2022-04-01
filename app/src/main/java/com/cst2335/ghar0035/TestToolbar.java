@@ -28,19 +28,20 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
         setContentView(R.layout.activity_test_toolbar);
         Log.i(TAG , "onCreate");
 
-        //This gets the toolbar from the layout:
-        Toolbar toolbar = findViewById(R.id.myToolbar);
-        setSupportActionBar(toolbar);
-        toolbar.bringToFront();
+        //For toolbar layout:
+        Toolbar toolbar = findViewById(R.id.toolbar_layout);
+        setSupportActionBar(toolbar); //causes Android to call onCreateOptionsMenu(Menu menu)
+        toolbar.bringToFront();  //brings toolbar layout on top of other layouts
 
-        //For NavigationDrawer:
-       DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        //For Drawer layout:
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //For NavigationView:
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this); //registers for NavigationItem Selection events
     }
 
     @Override
@@ -49,19 +50,18 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
 
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_items, menu);
+        inflater.inflate(R.menu.toolbar_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(TAG, "onOptionsItemSelected");
-        System.out.println("mehri");
+
         String message = null;
         switch (item.getItemId()) {
-
             case R.id.play:
-                message = "You clicked on start icon";
+                message = "You clicked on play icon";
                 break;
             case R.id.pause:
                 message = "You clicked on pause icon";
@@ -79,17 +79,12 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
         return true;
     }
 
-    // Needed for the OnNavigationItemSelected interface:
     //@Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Log.i(TAG, "onNavigationItemSelected");
 
-        String message = null;
-
-
-        switch(item.getItemId())
-        {
+        switch(item.getItemId()) {
             case R.id.ChatPage:
-
                 Intent gotoChat = new Intent(TestToolbar.this , ChatRoomActivity.class);
                 startActivity(gotoChat);
                 break;
@@ -104,8 +99,7 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
                 break;
         }
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-
+        drawerLayout.closeDrawer(GravityCompat.START);   //Closes the drawer
         return true;
     }
 }

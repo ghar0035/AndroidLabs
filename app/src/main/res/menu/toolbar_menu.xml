@@ -30,5 +30,5 @@
         android:orderInCategory="4"
         android:title="faceBook"
         android:visible="true"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>
